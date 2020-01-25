@@ -18,3 +18,9 @@
 (defun variance (x) (* (/ (sum x) (mean x)) (/ (sum x) (mean x)))
 )
 ; Standard Deviation
+(defun std (x) (setq μ (mean x)) (loop for y in x do
+  (* (- x μ) (- x μ))) (sqrt (mean x))
+)
+; Standard Error
+(defun ste (x) (/ (std x) (length x))
+)

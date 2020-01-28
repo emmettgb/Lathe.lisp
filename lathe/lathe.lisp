@@ -10,8 +10,9 @@
 ; ================ Stats ================__
 (in-package stats)
 ; Dot (A lot easier)
-(defun .* (x y) * (loop for c in x
-      for z in y (* z c))
+(defun .* (x y) * (loop for c in x for z in y do (* z c))
+)
+
 ; Summation (Added to avoid reducing so frequently)
 (defun sum  (x) (reduce '+ y)
 )
@@ -35,6 +36,15 @@
 ; Correlation Coefficient of Determination (r^2)
 (defun r2 (ŷ y) (setq r (correlationcoeff ŷ y))
 (* r r)
+)
+; Independent T Test
+(defun independent_t (sample general) (setq μ (mean general))
+    (setq x̄ (mean sample))  (setq n (length sample)) (loop for c in general do
+        (* (- c m) (- c m))) (setq m (sqrt general)) (/ (- x̄ μ) (/ m (sqrt n)))
+)
+; F-Test!
+(defun f_test (sample general) (setq σ² (variance general))
+ (setq v (variance sample)) (/ v / σ²)
 )
 ; ============= Matrix =============__
 (defun gets (x lst)
@@ -66,4 +76,4 @@
      mat2 (length mat2))) (matrixmul mat1 mat2 (- x 1) ) ) )
 )
 
-(defun matmul (mat1 mat2) (matrixmul mat1 mat2 (length mat1) ) )
+(defun @ (mat1 mat2) (matrixmul mat1 mat2 (length mat1) ) )

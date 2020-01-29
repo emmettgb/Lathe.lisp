@@ -1,14 +1,11 @@
 ;!=== Lathe.lisp Machine-Learning Library ===!
+;|      = Easily ML Lathe.stats.lisp =       |
 ;|      Lathe Software Foundation 2020       |
 ;|          MIT Permissive License           |
-
-; Make Packages
+; ~~~~ Make Package ~~~~
 (make-package :stats)
-(make-package :preprocess)
-(make-package :models)
-(make-package :matrix)
 ; ================ Stats ================__
-(in-package stats)
+(in-package :stats)
 ; Dot (A lot easier)
 (defun .* (x y) * (loop for c in x for z in y do (* z c))
 )

@@ -7,9 +7,8 @@
 ; ================ Stats ================__
 (in-package :stats)
 ; Dot (A lot easier)
-(defun .* (x y) * (loop for c in x for z in y do (* z c))
+(defun .* (x y)(mapcar '* x y)
 )
-
 ; Summation (Added to avoid reducing so frequently)
 (defun sum  (x) (reduce '+ y)
 )
@@ -29,7 +28,10 @@
 ; Correlation Coefficient (r)
 (defun correlationcoeff (x y) (setq n (length x))
 (setq yn (length y)) (setq Σx (sum x)) (setq Σy (sum y))
-)
+ (setq Σx2 (sum (.* x x))) (setq Σy2 (sum (.* y y)))
+ (setq Σxy (sum (.* x y)))
+ ()
+ )
 ; Correlation Coefficient of Determination (r^2)
 (defun r2 (ŷ y) (setq r (correlationcoeff ŷ y))
 (* r r)

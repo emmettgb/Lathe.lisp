@@ -3,7 +3,6 @@
 ;|          MIT Permissive License           |
 
 ; Make Packages
-
-
-
-(make-package :matrix)
+(load "stats.lisp")
+(load "preprocess.lisp")
+(load "models.lisp")

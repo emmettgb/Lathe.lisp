@@ -3,7 +3,11 @@
 ;|      Lathe Software Foundation 2020       |
 ;|          MIT Permissive License           |
 ; ~~~~ Make Package ~~~~
-(make-package :stats)
+(defpackage :stats
+   (:use :common-lisp)
+   (:export :.* :sum :mean :variance :std :ste :r :r2 :independent_t
+   :f_test :gets :getrow :getcol :dot)
+)
 ; ================ Stats ================__
 (in-package :stats)
 ; Dot (A lot easier)
@@ -26,7 +30,7 @@
 (defun ste (x) (/ (std x) (length x))
 )
 ; Correlation Coefficient (r)
-(defun correlationcoeff (x y) (setq n (length x))
+(defun r (x y) (setq n (length x))
 (setq yn (length y)) (setq Σx (sum x)) (setq Σy (sum y))
  (setq Σx2 (sum (.* x x))) (setq Σy2 (sum (.* y y)))
  (setq Σxy (sum (.* x y)))
@@ -75,4 +79,5 @@
      mat2 (length mat2))) (matrixmul mat1 mat2 (- x 1) ) ) )
 )
 
-(defun @ (mat1 mat2) (matrixmul mat1 mat2 (length mat1) ) )
+(defmacro dot (mat1 mat2) (matrixmul mat1 mat2 (length mat1) ) )
+; ============================================

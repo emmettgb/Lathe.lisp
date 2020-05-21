@@ -6,7 +6,7 @@
 (defpackage :stats
    (:use :common-lisp)
    (:export :.* :sum :mean :variance :std :ste :r :r2 :independent_t
-   :f_test :gets :getrow :getcol :dot)
+   :f_test :dot)
 )
 ; ================ Stats ================__
 (in-package :stats)
@@ -14,10 +14,13 @@
 (defun .* (x y)(mapcar '* x y)
 )
 ; Summation (Added to avoid reducing so frequently)
-(defun sum  (x) (reduce '+ y)
+(defun sum  (x) (reduce '+ x)
 )
 ; Mean
-(defun mean (x) (/ (sum x) (length x))
+(defun mean (x)
+    (setq Σ (sum x))
+    (setq n (length x))
+    (/ Σ n)
 )
 ; Variance
 (defun variance (x) (* (/ (sum x) (mean x)) (/ (sum x) (mean x)))
